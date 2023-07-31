@@ -5,7 +5,7 @@
 :root {
 	--bgclr: #000;
 	--bgstart: rgba(100, 0, 0, 0.100);
-	--bgfinish: rgba(255, 0, 0, 0);
+	--bgfinish: rgba(255, 0, 0, 255);
 	--duration: 3s;
 }
 
