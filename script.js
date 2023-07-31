@@ -2,10 +2,9 @@ const progressBar = document.getElementById("progressbar");
 
 function changeStyles(params)
 {
-
 	if(params.percent)
 	{
-		progressBar.setAttribute('data-percent', new percent);
+		progressBar.setAttribute('data-percent', params.percent);
 	}
 
 	if(params.duration)
@@ -26,6 +25,13 @@ function changeStyles(params)
 	if(params.bgfinish)
 	{
 		document.documentElement.style.setProperty('--bgfinish', params.bgfinish);
+		var cssBgfinish = getComputedStyle(document.documentElement).getPropertyValue('--bgfinish');
+		if(cssBgfinish === 'white')
+		{
+			progressBar.style.color = "black";
+		} else {
+			return;
+		}
 	}
 }
 
