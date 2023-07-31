@@ -36,8 +36,6 @@ function changeStyles(params)
 }
 
 window.addEventListener("load", (event) => {
-	const percentValue = progressBar.getAttribute("data-percent");
-
 	var urlParams = new URLSearchParams(window.location.search);
 	var params = {};
 
@@ -47,12 +45,14 @@ window.addEventListener("load", (event) => {
 
 	changeStyles(params);
 
+	const percentValue = progressBar.getAttribute("data-percent");
+
     const valueWithoutPercent = parseFloat(percentValue.replace("%", ""));
     let interval = setInterval(() => {
     	const computedStyle = getComputedStyle(progressBar);
     	const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
-    	progressBar.style.setProperty('--width', width + .1);
-        if(Math.round(width * 10) / 10 === valueWithoutPercent)
+    	progressBar.style.setProperty('--width', width + 0.1);
+		if(Math.round(width) === Math.round(valueWithoutPercent))
         {
             clearInterval(interval);
         }
