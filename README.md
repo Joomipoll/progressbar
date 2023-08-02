@@ -7,5 +7,5 @@ The following arguments are used to set up the progressbar: <br>
 - `duration` - sets the run time of the loading bar (for example `10s`)
 - `percent` - sets the loading bar percentage (for example `50%`)
 
-Syntax: `https://joomipoll.githun.io/progressbar?<attribute1>=<value1>&<attribute2>=<value2>` <br>
+Syntax: `https://joomipoll.github.io/progressbar?<attribute1>=<value1>&<attribute2>=<value2>` <br>
 We solve the problem together: https://github.com/orgs/community/discussions/62300
