@@ -1,4 +1,4 @@
-# progressbar.github.io
+# joomipoll.github.io/progressbar
 ## Using
 The following arguments are used to set up the progressbar: <br>
 - `bgclr` - sets the mother block color of the progress bar (for example `black`)
