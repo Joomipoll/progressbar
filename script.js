@@ -1,35 +1,33 @@
 const progressBar = document.getElementById("progressbar");
 
-var queryString = window.location.search;
-var params = new URLSearchParams(queryString);
-
-const setStyleProperty = (property, value) => {
-  if (value != null)
-  {
-	document.documentElement.style.setProperty(property, value);
-  }
-};
-
-const progressBar0 = document.querySelector('.progress-bar');
-
-setStyleProperty('--bgclr', params.get('bgclr'));
-setStyleProperty('--bgstart', params.get('bgstart'));
-setStyleProperty('--bgfinish', params.get('bgfinish'));
-
-if (getComputedStyle(document.documentElement).getPropertyValue('--bgfinish') === 'white')
-{
-	progressBar0.style.color = "black";
-}
-
-setStyleProperty('--duration', params.get('duration'));
-
-const percent = params.get('percent');
-if (percent != null)
-{
-	progressBar0.setAttribute('data-percent', percent);
-}
-
 window.addEventListener("load", (event) => {
+	var queryString = window.location.search;
+	var params = new URLSearchParams(queryString);
+
+	const setStyleProperty = (property, value) => {
+  	if(value != null)
+  		{
+			document.documentElement.style.setProperty(property, value);
+  		}
+	};
+
+	const progressBar0 = document.querySelector('#progressbar');
+
+	setStyleProperty('--duration', params.get('duration'));
+	setStyleProperty('--bgclr', params.get('bgclr'));
+	setStyleProperty('--bgstart', params.get('bgstart'));
+	setStyleProperty('--bgfinish', params.get('bgfinish'));
+
+	if(getComputedStyle(document.documentElement).getPropertyValue('--bgfinish') === 'white')
+	{
+		progressBar0.style.color = "black";
+	}
+
+	const percent = params.get('percent');
+	if(percent != null)
+	{
+		progressBar0.setAttribute('data-percent', percent);
+	}
 	const percentValue = progressBar.getAttribute("data-percent");
 
     const valueWithoutPercent = parseFloat(percentValue.replace("%", ""));
