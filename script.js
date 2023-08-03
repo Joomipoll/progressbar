@@ -1,50 +1,35 @@
 const progressBar = document.getElementById("progressbar");
 
-function changeStyles(params)
-{
-	if(params.percent)
-	{
-		progressBar.setAttribute('data-percent', params.percent);
-	}
+var queryString = window.location.search;
+var params = new URLSearchParams(queryString);
 
-	if(params.duration)
-	{
-		document.documentElement.style.setProperty('--duration', params.duration);
-	}
-	
-	if(params.bgclr)
-	{
-		document.documentElement.style.setProperty('--bgclr', params.bgclr);
-	}
-	
-	if(params.bgstart)
-	{
-		document.documentElement.style.setProperty('--bgstart', params.bgstart);
-	}
-	
-	if(params.bgfinish)
-	{
-		document.documentElement.style.setProperty('--bgfinish', params.bgfinish);
-		var cssBgfinish = getComputedStyle(document.documentElement).getPropertyValue('--bgfinish');
-		if(cssBgfinish === 'white')
-		{
-			progressBar.style.color = "black";
-		} else {
-			return;
-		}
-	}
+const setStyleProperty = (property, value) => {
+  if (value != null)
+  {
+	document.documentElement.style.setProperty(property, value);
+  }
+};
+
+const progressBar0 = document.querySelector('.progress-bar');
+
+setStyleProperty('--bgclr', params.get('bgclr'));
+setStyleProperty('--bgstart', params.get('bgstart'));
+setStyleProperty('--bgfinish', params.get('bgfinish'));
+
+if (getComputedStyle(document.documentElement).getPropertyValue('--bgfinish') === 'white')
+{
+	progressBar0.style.color = "black";
+}
+
+setStyleProperty('--duration', params.get('duration'));
+
+const percent = params.get('percent');
+if (percent != null)
+{
+	progressBar0.setAttribute('data-percent', percent);
 }
 
 window.addEventListener("load", (event) => {
-	var urlParams = new URLSearchParams(window.location.search);
-	var params = {};
-
-	urlParams.forEach(function(value, key) {
-		params[key] = value;
-	});
-
-	changeStyles(params);
-
 	const percentValue = progressBar.getAttribute("data-percent");
 
     const valueWithoutPercent = parseFloat(percentValue.replace("%", ""));
@@ -52,7 +37,7 @@ window.addEventListener("load", (event) => {
     	const computedStyle = getComputedStyle(progressBar);
     	const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
     	progressBar.style.setProperty('--width', width + 0.1);
-		if(Math.round(width) === Math.round(valueWithoutPercent))
+	if(Math.round(width) === Math.round(valueWithoutPercent))
         {
             clearInterval(interval);
         }
