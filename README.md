@@ -1,4 +1,7 @@
 # joomipoll.github.io/progressbar
+
+Not yet ready! Need to convert animation to gif (this is what i'm doing now)
+
 ## Using
 The following arguments are used to set up the progressbar: <br>
 - `bgclr` - sets the mother block color of the progress bar (for example `black`)
