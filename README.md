@@ -14,4 +14,4 @@ Syntax: `https://joomipoll.github.io/progressbar/index.html?<attribute1>=<value1
 
 ## Special thanks
 - [@h7x4](https://github.com/h7x4)
-- [@Mr111ram](https://github.com/Mr111ram0)
+- [@Mr111ram](https://github.com/Mr111ram)
