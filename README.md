@@ -12,6 +12,10 @@ The following arguments are used to set up the progressbar: <br>
 
 Syntax: `https://joomipoll.github.io/progressbar/index.html?<attribute1>=<value1>&<attribute2>=<value2>` <br>
 
+## TODO
+- [ ] Change the value of the duration parameter (flexibility)
+- [ ] Convert progressbar to gif
+
 ## Special thanks
 - [@h7x4](https://github.com/h7x4)
 - [@Mr111ram](https://github.com/Mr111ram)
