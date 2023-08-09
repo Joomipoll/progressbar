@@ -13,7 +13,8 @@ window.addEventListener("load", (event) => {
 
 	const progressBar0 = document.querySelector('#progressbar');
 
-	setStyleProperty('--duration', params.get('duration'));
+	const duration = params.get('duration');
+	setStyleProperty('--duration', duration);
 	setStyleProperty('--bgclr', params.get('bgclr'));
 	setStyleProperty('--bgstart', params.get('bgstart'));
 	setStyleProperty('--bgfinish', params.get('bgfinish'));
@@ -23,22 +24,30 @@ window.addEventListener("load", (event) => {
 		progressBar0.style.color = "black";
 	}
 
-	const percent = params.get('percent');
+	percent = params.get('percent');
+	valueWithoutPercent = percent.replace("%", "");
 	if(percent != null)
 	{
-		progressBar0.setAttribute('data-percent', percent);
+		if(percent <= 0 || percent > 100)
+		{
+			throw "Invalid value entered";
+		} else {
+			percent1 = percent.toString();
+			percent2 = percent1 + "%";
+			progressBar0.setAttribute('data-percent', percent);
+		}
 	}
+
 	const percentValue = progressBar.getAttribute("data-percent");
 
-    const valueWithoutPercent = parseFloat(percentValue.replace("%", ""));
     let interval = setInterval(() => {
     	const computedStyle = getComputedStyle(progressBar);
     	const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
-    	progressBar.style.setProperty('--width', width + 0.1);
+    	progressBar.style.setProperty('--width', width + parseFloat((duration.replace("s", "") / 10) / 5));
 	if(Math.round(width) === Math.round(valueWithoutPercent))
         {
             clearInterval(interval);
         }
-    }, 5)
+    }, 1)
 });
 
